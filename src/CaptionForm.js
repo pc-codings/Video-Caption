@@ -27,12 +27,18 @@ function CaptionForm({ onVideoUrlChange, onCaptionsChange }) {
 
   const addCaption = () => {
     if (captionText && timestamp) {
-      const newCaption = { text: captionText, time: parseFloat(timestamp) };
-      const newCaptionList = [...captionList, newCaption];
-      setCaptionList(newCaptionList);
-      onCaptionsChange(newCaptionList);
-      setCaptionText("");
-      setTimestamp("");
+      const newTime = parseFloat(timestamp);
+      const existingCaption = captionList.find(caption => caption.time === newTime);
+      if (existingCaption) {
+        alert("Caption at this timestamp already exists!");
+      } else {
+        const newCaption = { text: captionText, time: newTime };
+        const newCaptionList = [...captionList, newCaption];
+        setCaptionList(newCaptionList);
+        onCaptionsChange(newCaptionList);
+        setCaptionText("");
+        setTimestamp("");
+      }
     }
   };
 
