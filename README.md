@@ -1,3 +1,46 @@
+### Technical Decision
+When planning the implementation of the video captioning web app, I carefully considered the technologies and libraries I would use to ensure a smooth development process and a robust final product. Here's a detailed breakdown of my thought process and planning:
+
+## Choosing the Technology Stack
+Frontend Framework
+
+React: I chose React for its efficiency in building dynamic and interactive user interfaces.
+Libraries
+
+React Player: To handle video playback, especially for videos hosted on platforms like YouTube. It simplifies the integration of video controls and makes it easy to embed videos.
+
+Styled-components or CSS Modules: For modular and scoped CSS, which keeps the styles organized and easier to manage.
+Input Fields and Form Design
+I identified the need for several input fields to capture the necessary data for video and captions:
+
+Video URL: To specify the source of the video.
+Caption Text: To input the text that will be displayed as a caption.
+Timestamp : user can specify the time against the caption
+
+## Component Design
+VideoForm Component
+
+Input fields for video URL, caption text, and timestamp.
+A button to add the caption.
+
+## VideoPlayer Component
+
+Utilizes ReactPlayer to load and control the video.
+Displays the video with the capability to pause and play directly from the player.
+CaptionDisplay Component
+
+Shows the current captions on the video.
+Ensures that no two captions overlap by validating the start and end times.
+Handling Captions and Validation
+No Overlapping Captions: Ensure that no two captions can be set for the same timestamp. I will implement logic to check for overlaps and alert the user if there is a conflict.
+Delete Option: Provide a mechanism for users to delete captions if needed.
+Timestamp Validation: Ensure the timestamp inputs are within the video duration. If a user inputs a timestamp beyond the video length, they should receive an error message.
+Future Enhancements
+Automated Caption Generation
+Integrate ChatGPT or another AI model to automatically generate captions based on the video content. This feature can be added as an enhancement in the future.
+Handling Edge Cases
+Ensure robust handling of edge cases, such as invalid URLs, overlapping timestamps, and ensuring all captions fall within the video's duration.
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
